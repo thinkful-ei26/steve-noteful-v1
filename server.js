@@ -3,6 +3,7 @@ const express = require('express');
 const data = require('./db/notes');
 const { PORT } = require('./conifg');
 const { logger } = require('./middleware/logger');
+
 // console.log(data);
 const app = express();
 
@@ -32,9 +33,26 @@ app.get('/api/notes/:id', (req, res) => {
   res.json(myNote);
 });
 
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  res.status(404).json({ message: 'Page Not found' });
+});
+
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.json({
+    message: err.message,
+    error: err
+  });
+});
+app.get('/boom', (req, res, next) => {
+  throw new Error('Boom!!');
+});
+
 app
   .listen(PORT, function() {
-    console.info(`Server listening on ${this.address().port}`);
+    console.info(`Server listening on ${PORT}`);
   })
   .on('error', err => {
     console.error(err);
