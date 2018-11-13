@@ -4,4 +4,5 @@ const logger = function(req, res, next) {
   console.log('url is', req.url);
   next();
 };
-module.exports.logger;
+
+module.exports = logger;
