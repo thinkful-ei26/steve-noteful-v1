@@ -15,17 +15,13 @@ const app = express();
 app.use(express.static('public'));
 
 app.get('/api/notes', (req, res) => {
-  if (req.query.searchTerm) {
-    const filteredList = data.filter(elements =>
-      elements.title.includes(req.query.searchTerm)
-    );
-    console.log(req.query.searchTerm);
-    console.log(filteredList);
-
-    res.json(filteredList);
-  } else {
-    res.json(data);
-  }
+  const { searchTerm } = req.query;
+  notes.filter(searchTerm, (err, list) => {
+    if (err) {
+      return next(err);
+    }
+    res.json(list);
+  });
 });
 
 app.get('/api/notes/:id', (req, res) => {
