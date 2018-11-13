@@ -25,8 +25,14 @@ app.get('/api/notes', (req, res) => {
 });
 
 app.get('/api/notes/:id', (req, res) => {
-  const myNote = noes.find(parseInt(req.params.id));
-  res.json(myNote);
+  notes.find(parseInt(req.params.id), (err, note) => {
+    if (err) {
+      console.error('error find');
+    } else {
+      console.log(note);
+      res.json(note);
+    }
+  });
 });
 
 app.use(function(req, res, next) {
