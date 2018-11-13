@@ -72,15 +72,17 @@ const noteful = (function() {
       event.preventDefault();
 
       const editForm = $(event.currentTarget);
+
       const noteObj = {
         title: editForm.find('.js-note-title-entry').val(),
-        constent: editForm.find('.js-note-content-entry').val()
+        content: editForm.find('.js-note-content-entry').val()
       };
 
       noteObj.id = store.currentNote.id;
 
-      api.update(noteObj.id, noteobj, updateResponse => {
+      api.update(noteObj.id, noteObj, updateResponse => {
         store.currentNote = updateResponse;
+
         render();
       });
     });
