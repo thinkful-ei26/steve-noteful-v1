@@ -8,9 +8,8 @@ const router = require('./Routes/notes.router');
 // EXPRESS
 const app = express();
 
-app.use('/api/notes', router);
-
 app.use(express.json());
+app.use('/api/notes', router);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
