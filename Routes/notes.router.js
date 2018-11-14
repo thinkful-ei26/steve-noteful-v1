@@ -54,8 +54,6 @@ router.put('/:id', (req, res, next) => {
 
 // Post (insert) an item
 router.post('/', (req, res, next) => {
-  console.log('post route');
-  console.log(req.body);
   const { title, content } = req.body;
 
   const newItem = { title, content };
@@ -75,6 +73,20 @@ router.post('/', (req, res, next) => {
         .location(`http://${req.headers.host}/notes/${item.id}`)
         .status(201)
         .json(item);
+    } else {
+      next();
+    }
+  });
+});
+
+router.delete('/:id', (req, res, next) => {
+  notes.delete(parseInt(req.params.id), (err, note) => {
+    if (err) {
+      return next(err);
+    }
+    if (note) {
+      console.log('deleting note:');
+      res.status(202).end();
     } else {
       next();
     }
