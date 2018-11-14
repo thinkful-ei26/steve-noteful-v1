@@ -86,7 +86,7 @@ router.delete('/:id', (req, res, next) => {
     }
     if (note) {
       console.log('deleting note:');
-      res.status(202).end();
+      res.sendStatus(204);
     } else {
       next();
     }
