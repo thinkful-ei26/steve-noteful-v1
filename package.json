@@ -1,0 +1,24 @@
+{
+  "name": "noteful-app-v1",
+  "version": "0.0.1",
+  "description": "Notes App using restful methodology",
+  "license": "MIT",
+  "author": "Steve Anderson",
+  "repository": {
+    "type": "git"
+  },
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "mocha --exit"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "chai-http": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}
