@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use strict'
 const express = require('express')
 
@@ -37,3 +38,44 @@ if (require.main === module) {
     })
 }
 module.exports = app
+=======
+'use strict';
+const express = require('express');
+const data = require('./db/notes');
+// console.log(data);
+const app = express();
+
+// console.log('Hello Noteful!');
+
+// INSERT EXPRESS APP CODE HERE...
+app.use(express.static('public'));
+
+app.get('/api/notes', (req, res) => {
+  if (req.query.searchTerm) {
+    const filteredList = data.filter(elements =>
+      elements.title.includes(req.query.searchTerm)
+    );
+    console.log(req.query.searchTerm);
+    console.log(filteredList);
+
+    res.json(filteredList);
+  } else {
+    res.json(data);
+  }
+});
+
+app.get('/api/notes/:id', (req, res) => {
+  const myNote = data.find(element => {
+    return element.id === parseInt(req.params.id);
+  });
+  res.json(myNote);
+});
+
+app
+  .listen(8080, function() {
+    console.info(`Server listening on ${this.address().port}`);
+  })
+  .on('error', err => {
+    console.error(err);
+  });
+>>>>>>> 2c122d698993a249e75ab9d8ae533fc969a3b982
