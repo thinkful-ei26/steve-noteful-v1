@@ -11,7 +11,6 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js",
-<<<<<<< HEAD
     "test": "mocha --exit"
   },
   "dependencies": {
@@ -21,11 +20,5 @@
   "devDependencies": {
     "chai-http": "^4.2.0",
     "mocha": "^5.2.0"
-=======
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "express": "^4.16.4"
->>>>>>> 2c122d698993a249e75ab9d8ae533fc969a3b982
   }
 }

@@ -2,12 +2,7 @@
 'use strict';
 
 const api = {
-<<<<<<< HEAD
   search: function(query, callback) {
-=======
-
-  search: function (query, callback) {
->>>>>>> 2c122d698993a249e75ab9d8ae533fc969a3b982
     $.ajax({
       type: 'GET',
       url: '/api/notes/',
@@ -17,18 +12,13 @@ const api = {
     });
   },
 
-<<<<<<< HEAD
   details: function(id, callback) {
-=======
-  details: function (id, callback) {
->>>>>>> 2c122d698993a249e75ab9d8ae533fc969a3b982
     $.ajax({
       type: 'GET',
       dataType: 'json',
       url: `/api/notes/${id}`,
       success: callback
     });
-<<<<<<< HEAD
   },
 
   update: function(id, obj, callback) {
@@ -49,7 +39,5 @@ const api = {
       dataType: 'json',
       success: callback
     });
-=======
->>>>>>> 2c122d698993a249e75ab9d8ae533fc969a3b982
   }
 };
